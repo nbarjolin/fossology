@@ -153,7 +153,7 @@ if [[ $RUNTIME ]]; then
     # Using --target causes conflict in bin dir, using --upgrade overwrites it.
     # See https://github.com/pypa/pip/issues/8063
     # Dependencies for scancode
-    su $TARGETUSER -c 'python3 -m pip install --target=$HOME/pythondeps --no-input setuptools wheel'
+    su $TARGETUSER -c 'python3 -m pip install --target=$HOME/pythondeps --no-input setuptools==62.1.0 wheel==0.37.1'
     ###########################################################################
     if [[ $EXPERIMENTAL ]]; then
       # Include experimental dependencies
@@ -161,7 +161,7 @@ if [[ $RUNTIME ]]; then
       su $TARGETUSER -c 'PYTHONPATH="$HOME/pythondeps" python3 -m spacy download en_core_web_sm --target=$HOME/pythondeps'
     else
       # Only non-experimental dependencies
-      su $TARGETUSER -c 'PYTHONPATH="$HOME/pythondeps" python3 -m pip install --target=$HOME/pythondeps --no-input --upgrade scancode-toolkit'
+      su $TARGETUSER -c 'PYTHONPATH="$HOME/pythondeps" python3 -m pip install --target=$HOME/pythondeps --no-input --upgrade attrs==21.4.0 banal==1.0.6 binaryornot==0.4.4 charset-normalizer==2.0.12 click==8.1.3 colorama==0.4.4 commoncode==30.2.0 cryptography==2.6.1 debian-inspector==30.0.0 dparse==0.5.1 extractcode==30.0.0 extractcode-7z==16.5.210531 extractcode-libarchive==3.5.1.210531 fasteners==0.17.3 fingerprints==1.0.3 ftfy==6.1.1 future==0.18.2 gemfileparser==0.8.0 html5lib==1.1 idna==2.6 importlib-metadata==4.11.3 isodate==0.6.1 jaraco.functools==3.5.0 javaproperties==0.8.1 Jinja2==2.10 jsonstreams==0.6.0 license-expression==21.6.14 lxml==4.8.0 MarkupSafe==1.1.0 more-itertools==8.12.0 normality==2.3.3 packaging==21.3 parameter-expansion-patched==0.2.1b4 pdfminer.six==20220319 pkginfo==1.8.2 pluggy==0.13.1 plugincode==21.1.21 ply==3.11 publicsuffix2==2.20191221 pygmars==0.7.0 Pygments==2.12.0 pymaven-patch==0.3.0 pyparsing==3.0.8 rdflib==6.1.1 requests==2.21.0 scancode-toolkit==30.1.0 soupsieve==2.3.2.post1 spdx-tools==0.7.0a3 text-unidecode==1.3 toml==0.10.2 typecode==21.6.1 typecode-libmagic==5.39.210531 urllib3==1.24.1 wcwidth==0.2.5 webencodings==0.5.1'
     fi
     ###########################################################################
   else
